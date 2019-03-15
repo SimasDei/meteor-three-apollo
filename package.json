@@ -18,5 +18,8 @@
     "react": "^16.8.4",
     "react-apollo": "^2.5.2",
     "react-dom": "^16.8.4"
+  },
+  "devDependencies": {
+    "babel-plugin-inline-import": "^3.0.0"
   }
 }

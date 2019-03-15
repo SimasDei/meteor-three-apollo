@@ -1,0 +1,4 @@
+type Client {
+  _id: String!
+  name: String!
+}
