@@ -6,3 +6,7 @@ type Client {
 type Mutation {
   createClient(name: String!): Client
 }
+
+type Query {
+  clients: [Client]
+}

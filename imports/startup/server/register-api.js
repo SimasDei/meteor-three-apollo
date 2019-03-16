@@ -7,25 +7,12 @@ import { merge } from 'lodash';
  */
 import ClientsSchema from '../../api/clients/Clients.graphql';
 import ClientsResolvers from '../../api/clients/resolvers';
+import UsersSchema from '../../api/admins/User.graphql';
+import UsersResolvers from '../../api/admins/resolvers';
 
-const testSchema = `
-  type Query {
-    ahoy: String
-    clients: [Client]
-  }
-`;
+const typeDefs = [UsersSchema, ClientsSchema];
 
-const typeDefs = [testSchema, ClientsSchema];
-
-const resolver = {
-  Query: {
-    ahoy() {
-      return 'Ahoy Sailor o/';
-    }
-  }
-};
-
-const resolvers = merge(ClientsResolvers, resolver);
+const resolvers = merge(ClientsResolvers, UsersResolvers);
 
 const schema = makeExecutableSchema({ typeDefs, resolvers });
 
