@@ -1,6 +1,9 @@
 import React from 'react';
 import gql from 'graphql-tag';
 import { graphql } from 'react-apollo';
+
+import ClientForm from './ClientForm';
+
 const ahoyQuery = gql`
   {
     ahoy
@@ -16,6 +19,7 @@ const App = ({ data }) => {
   return (
     <div>
       <h1>{data.ahoy}</h1>
+      <ClientForm />
       <ul>
         {data.clients.map(client => (
           <li key={client._id}>
