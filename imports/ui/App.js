@@ -2,6 +2,8 @@ import React from 'react';
 import gql from 'graphql-tag';
 import { graphql } from 'react-apollo';
 
+import { withApollo } from 'react-apollo';
+
 import RegisterForm from './RegisterForm';
 import LoginForm from './LoginForm';
 import ClientForm from './ClientForm';
@@ -15,7 +17,7 @@ const clientsQuery = gql`
   }
 `;
 
-const App = ({ loading, clients }) => {
+const App = ({ loading, clients, client }) => {
   if (loading) return null;
   return (
     <div>
@@ -29,13 +31,22 @@ const App = ({ loading, clients }) => {
         ))}
       </ul>
       <h1>Login</h1>
-      <LoginForm />
+      <LoginForm client={client} />
       <h1>Register</h1>
-      <RegisterForm />
+      <RegisterForm client={client} />
+      <h1>Logout</h1>
+      <button
+        onClick={() => {
+          Meteor.logout();
+          client.resetStore();
+        }}
+      >
+        Logout
+      </button>
     </div>
   );
 };
 
 export default graphql(clientsQuery, {
   props: ({ data }) => ({ ...data })
-})(App);
+})(withApollo(App));

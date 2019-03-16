@@ -2,14 +2,15 @@ import Clients from './clients';
 
 export default {
   Query: {
-    clients() {
-      return Clients.find({}).fetch();
+    clients(obj, args, { userId }) {
+      return Clients.find({ userId }).fetch();
     }
   },
   Mutation: {
-    createClient(obj, { name }, context) {
+    createClient(obj, { name }, { userId }) {
       const clientId = Clients.insert({
-        name
+        name,
+        userId
       });
       return Clients.findOne(clientId);
     }

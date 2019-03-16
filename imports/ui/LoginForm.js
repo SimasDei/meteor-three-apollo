@@ -5,9 +5,11 @@ export class LoginForm extends Component {
   handleUserLogin = e => {
     e.preventDefault();
 
-    Meteor.loginWithPassword(this.email.value, this.password.value, error =>
-      console.log(error)
-    );
+    Meteor.loginWithPassword(this.email.value, this.password.value, error => {
+      if (!error) {
+        this.props.client.resetStore();
+      }
+    });
   };
 
   render() {
@@ -23,7 +25,7 @@ export class LoginForm extends Component {
           placeholder="Password"
           ref={input => (this.password = input)}
         />
-        <button>Register</button>
+        <button>Login</button>
       </form>
     );
   }
