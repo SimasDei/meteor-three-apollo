@@ -8,6 +8,7 @@
     "@babel/runtime": "^7.1.5",
     "apollo-client": "^2.5.1",
     "apollo-client-preset": "^1.0.8",
+    "bcrypt": "^3.0.4",
     "body-parser": "^1.18.3",
     "express": "^4.16.4",
     "graphql": "^14.1.1",

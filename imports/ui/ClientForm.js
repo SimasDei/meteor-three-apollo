@@ -12,11 +12,13 @@ const createClient = gql`
 
 export class ClientForm extends Component {
   handleSubmit = () => {
-    this.props.createClient({
-      variables: {
-        name: this.name.value
-      }
-    });
+    this.props
+      .createClient({
+        variables: {
+          name: this.name.value
+        }
+      })
+      .catch(error => console.log(error));
   };
 
   render() {
@@ -33,4 +35,9 @@ export class ClientForm extends Component {
   }
 }
 
-export default graphql(createClient, { name: 'createClient' })(ClientForm);
+export default graphql(createClient, {
+  name: 'createClient',
+  options: {
+    refetchQueries: ['Clients']
+  }
+})(ClientForm);
