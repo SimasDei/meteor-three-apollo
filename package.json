@@ -10,7 +10,7 @@
     "apollo-client-preset": "^1.0.8",
     "bcrypt": "^5.0.0",
     "body-parser": "^1.18.3",
-    "express": "^4.16.4",
+    "express": "^4.17.3",
     "graphql": "^14.1.1",
     "graphql-server-express": "^1.4.0",
     "graphql-tag": "^2.10.1",
